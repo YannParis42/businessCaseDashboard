@@ -1,0 +1,32 @@
+<div class="container m-4">
+  <form [formGroup]="formLogin" class="col-8">
+
+  <div class="my-2">
+    <label class="form-label">E-mail</label>
+    <input class="form-control"
+           formControlName="email"
+           [class.is-valid]="getFormControl('email').valid"
+           [class.is-invalid]="isFormControlInvalid('email')">
+
+    <div class="alert-danger" *ngIf="isFormControlInvalid('email')">
+      <div *ngIf="getFormControl('email')">Veuillez saisir un e-mail</div>
+    </div>
+  </div>
+
+  <div class="my-2">
+    <label class="form-label">Mot de passe</label>
+    <input class="form-control"
+           formControlName="password"
+           type="password"
+           [class.is-valid]="getFormControl('password').valid"
+           [class.is-invalid]="isFormControlInvalid('password')">
+
+    <div class="alert-danger" *ngIf="isFormControlInvalid('password')">
+      <div *ngIf="getFormControl('password')">Veuillez saisir un Mot de passe</div>
+    </div>
+  </div>
+
+  <button class="btn btn-success my-2" type="submit" (click)="onSubmit()"  [disabled]="formLogin.invalid">Connexion</button>
+
+</form>
+</div>

@@ -1,2 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap"
+@import "~bootstrap";
+
+$green: #22C293;
+$gray: rgb(68, 68, 68);
+$white: white;
+$grey: rgb(68, 68, 68, 0.5);
+$greenDark: #2f9173;
+
+.green {
+  background-color: $green;
+  color: $gray;
+}
+
+.container-image-single {
+  position: relative;
+
+  > img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      transition: ease-in-out .15s;
+
+      // &:hover {
+      //     cursor: pointer;
+      //     transform: scale(1.05);
+      //     transition: ease-in-out .15s;
+      // }
+  }
+}
+.logo{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.sidebar{
+  min-height: 100vh;
+}
