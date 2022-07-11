@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.httpClient.getRequest(UrlApi.commandRecurrence).subscribe((json) => {
+        this.httpClient.getRequest(UrlApi.commandRecurrence).subscribe((json) => {
       console.log(json);
     });
   }

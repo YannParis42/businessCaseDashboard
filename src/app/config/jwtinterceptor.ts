@@ -1,5 +1,6 @@
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
+import { UrlApi } from "src/service/url-api";
 
 export class JwtInterceptor implements HttpInterceptor{
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -7,7 +8,7 @@ export class JwtInterceptor implements HttpInterceptor{
       if(token){
         request = request.clone({
           setHeaders: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${localStorage.getItem(UrlApi.keyTokenJWT)}`
           }
         })
       }
