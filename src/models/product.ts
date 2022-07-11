@@ -1,6 +1,6 @@
 import {Category} from "./category";
 import {ProductPictures} from "./product-pictures";
-import {Brand} from "./brand";
+import {Brand} from "./brands";
 
 export interface Product {
   id: number;
