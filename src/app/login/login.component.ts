@@ -15,8 +15,15 @@ import {
   Validators
 } from '@angular/forms';
 import {
+  Router
+} from '@angular/router';
+import { ConnectableObservable } from 'rxjs';
+import {
   HttpClientServiceService
 } from 'src/service/http-client-service.service';
+import {
+  UrlApi
+} from 'src/service/url-api';
 
 @Component({
   selector: 'app-login',
@@ -27,6 +34,8 @@ export class LoginComponent {
 
   private _email: string = '';
   private _password: string = '';
+  error: string = '';
+
   formLogin: FormGroup = new FormGroup({
     email: new FormControl(this._email, [Validators.required, Validators.email]),
     password: new FormControl(this._password, [Validators.required, ])
@@ -42,7 +51,8 @@ export class LoginComponent {
   }
 
   constructor(
-    private httpClientService: HttpClientServiceService
+    private httpClientService: HttpClientServiceService,
+    private router: Router,
   ) {};
 
   onSubmit(): void {
@@ -56,10 +66,22 @@ export class LoginComponent {
       };
 
       this.httpClientService.loginCheck(jsonPostUser).subscribe((response) => {
-        console.log(response)
-      });
+          if (response.token) {
+            console.log(response.token);
+            localStorage.setItem(UrlApi.keyTokenJWT, response.token);
+            this.router.navigate(['/dashboard']).then();
+          }
+        },
+        (error) => {
+          if (error instanceof HttpErrorResponse) {
+            if (error.status === 401) {
+              this.error = 'Identifiants invalides';
+            }
+          }
 
+        }
+      );
     }
-  }
 
+  }
 }

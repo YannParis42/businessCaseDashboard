@@ -1,8 +1,16 @@
 <div class="container m-4">
-  <form [formGroup]="formLogin" class="col-8">
+  <h2>Connexion:</h2>
+  <div class="col-12 mb-2">
+
+    <div class="alert-danger col-3" *ngIf="error.length > 0">
+      <h3>{{ error }}</h3>
+    </div>
+  </div>
+
+  <form [formGroup]="formLogin" class="col-6">
 
   <div class="my-2">
-    <label class="form-label">E-mail</label>
+    <label class="form-label greenP">E-mail</label>
     <input class="form-control"
            formControlName="email"
            [class.is-valid]="getFormControl('email').valid"
@@ -14,7 +22,7 @@
   </div>
 
   <div class="my-2">
-    <label class="form-label">Mot de passe</label>
+    <label class="form-label greenP">Mot de passe</label>
     <input class="form-control"
            formControlName="password"
            type="password"

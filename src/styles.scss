@@ -7,9 +7,18 @@ $white: white;
 $grey: rgb(68, 68, 68, 0.5);
 $greenDark: #2f9173;
 
+h2{
+  color: $green;
+
+}
+
 .green {
   background-color: $green;
-  color: $gray;
+  color: $green;
+}
+
+.greenP {
+  color: $green;
 }
 
 .container-image-single {
@@ -20,7 +29,7 @@ $greenDark: #2f9173;
       width: 100%;
       object-fit: cover;
       border-radius: 20px;
-      transition: ease-in-out .15s;
+      // transition: ease-in-out .15s;
 
       // &:hover {
       //     cursor: pointer;
